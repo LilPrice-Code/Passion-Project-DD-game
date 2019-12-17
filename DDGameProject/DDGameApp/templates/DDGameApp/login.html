@@ -1,0 +1,12 @@
+{% extends 'DDGameApp/index.html' %} {% block content %}
+<section id="sect">
+    <h2>Log In</h2>
+    <form method="post">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button>Log In</button>
+    </form>
+    <h4>Don't have an Account? <a href="{%url 'newuser'%}">Sign up</a></h4>
+    <button onclick=window.location.href="{% url 'index' %}" >Back to Home</button>
+</section>
+{% endblock %}

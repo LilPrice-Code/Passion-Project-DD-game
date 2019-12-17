@@ -1,0 +1,33 @@
+body{
+    background-color: cadetblue;
+    text-align: center;
+}
+button {
+    background-color: cadetblue;
+    border: black 2px solid;
+    padding: 1% 2% 1% 2%;
+}
+button:hover {
+    background-color: black;
+    border: greenyellow 2px solid;
+    color: cadetblue;
+}
+.butt{
+    padding: 4px;
+}
+#butt{
+    text-align: right;
+}
+header{
+    text-align: center;
+}
+
+hr{
+    color: black;
+}
+input{
+    width: 100%;
+}
+#sect{
+    margin: 2% 40% 2% 40%;
+}
