@@ -1,16 +1,16 @@
 body{
-    background-color: cadetblue;
+    /*background-color: cadetblue;*/
     text-align: center;
 }
 button {
-    background-color: cadetblue;
+    /*background-color: cadetblue;*/
     border: black 2px solid;
     padding: 1% 2% 1% 2%;
 }
 button:hover {
     background-color: black;
     border: greenyellow 2px solid;
-    color: cadetblue;
+    color: white;
 }
 .butt{
     padding: 4px;

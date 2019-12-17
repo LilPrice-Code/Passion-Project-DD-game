@@ -8,8 +8,8 @@ from .forms import UserForm
 # Create your views here.
 def index(request):
 #     oldwiki = WikiModel.objects.all()
-#     users = request.user
-    return render(request, 'DDGameApp/index.html')
+    users = request.user
+    return render(request, 'DDGameApp/index.html', {'user': users })
 
 
 def DDlogin(request):

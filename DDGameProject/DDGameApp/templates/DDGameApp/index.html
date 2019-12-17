@@ -8,10 +8,9 @@
 </head>
 <body>
 {% if user.is_authenticated %}
-<header><h2>Welcome to Project DragonSlayer</h2> <p><button  id="butt" class="butt" onclick=window.location.href="{% url 'logout' %}" >Logout</button></p>
-    <button class="butt" onclick=window.location.href="{% url 'overlord' %}" >Overlord</button>
-    <button class="butt" onclick=window.location.href="{% url 'player' %}" >Player</button>
-
+<header>
+    <h2>Welcome to Project DragonSlayer</h2>
+    <p><button  id="butt" class="butt" onclick=window.location.href="{% url 'logout' %}" >Logout</button></p>
 </header>
 {%else%}
 <header><h2>Project DragonSlayer</h2>
@@ -21,7 +20,7 @@
 {% block content%}
 {% if user.is_authenticated %}
 {%block context%}
-<h1>Welcome Project DragonSlayer</h1>
+<h1>Welcome to Project DragonSlayer, {{user.username}}</h1>
 <h2>Are a coming in as an ...</h2>
 <h2><a href="{% url 'overlord' %}" >Overlord</a> or <a href="{% url 'player' %}" >Player</a>?</h2>
 {%endblock%}
