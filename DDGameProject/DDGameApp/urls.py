@@ -9,7 +9,9 @@ urlpatterns = [
     path('signout/', views.DDlogout, name = 'logout'),
     path('signup/', views.newplayer, name = 'newuser'),
     path('overlord/', views.overlord, name = 'overlord'),
-    path('player/', views.player, name = 'player')
+    path('player/', views.player, name = 'player'),
+    path('gameboard/', views.board, name = 'board'),
+
     ]
 
 if settings.DEBUG:

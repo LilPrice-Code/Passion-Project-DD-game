@@ -1,7 +1,8 @@
 {% extends 'DDGameApp/index.html' %} {% block context %}
 <section>
-    <div>Create Game || My Games || Ongoing Games || <button class="butt" onclick=window.location.href="{% url 'player' %}" >Switch to Player Mode</button></div>
+    <div>Create Game || My Games || Ongoing Games || <button class="butt" onclick=window.location.href="{% url 'board' %}" >Game Board</button> || <button class="butt" onclick=window.location.href="{% url 'player' %}" >Switch to Player Mode</button></div>
+    {%block over%}
     <h2>Welcome Overlord, {{user.username}}</h2>
-
+    {%endblock%}
 </section>
 {% endblock %}

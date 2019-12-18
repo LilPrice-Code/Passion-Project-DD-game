@@ -48,3 +48,6 @@ def overlord(request):
     return render(request, 'DDGameApp/overlord.html')
 def player(request):
     return render(request, 'DDGameApp/player.html')
+
+def board(request):
+    return render(request, 'DDGameApp/board.html')
