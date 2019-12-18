@@ -1,8 +1,6 @@
 {% extends 'DDGameApp/overlord.html' %} {% block over %}   {% load static %}
 <div>
-    <h2>Welcome Player, {{user.username}}</h2>
-    <div onload="startGame()"></div>
-    <canvas id="mycanvas" width="1000" height="500" style="border:3px solid #000000;"></canvas>
+    <canvas id="mycanvas" width="1000" height="500" style="border:3px solid #000000;" style="background-image: "atlas-close-up-dark-dirty-592753.jpg"; onclick="drawline()"></canvas>
 </div>
 
 <!--<script>-->
