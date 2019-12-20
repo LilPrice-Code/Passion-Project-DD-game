@@ -29,11 +29,13 @@ class GameModel(models.Model):
     pub_date = models.DateTimeField(default = timezone.now)
     overload = models.ForeignKey(User, on_delete= models.CASCADE)
     active = models.CharField(max_length = 4, default = "no")
-    player1 = models.ForeignKey(Character, on_delete=True, related_name="player1",  default=1)
-    player2 = models.ForeignKey(Character, on_delete=True, related_name="player2",  default=1)
-    player3 = models.ForeignKey(Character, on_delete=True, related_name="player3",  default=1)
-    player4 = models.ForeignKey(Character, on_delete=True, related_name="player4",  default=1)
-    player5 = models.ForeignKey(Character, on_delete=True, related_name="player5",  default=1)
+    display = models.CharField(max_length = 4, default = "no")
+    picture = models.CharField(max_length = 10000)
+#     player1 = models.ForeignKey(Character, on_delete=True, related_name="player1",  default=1)
+#     player2 = models.ForeignKey(Character, on_delete=True, related_name="player2",  default=1)
+#     player3 = models.ForeignKey(Character, on_delete=True, related_name="player3",  default=1)
+#     player4 = models.ForeignKey(Character, on_delete=True, related_name="player4",  default=1)
+#     player5 = models.ForeignKey(Character, on_delete=True, related_name="player5",  default=1)
     def __str__(self):
         return self.worldName
 

@@ -11,8 +11,9 @@ urlpatterns = [
     path('overlord/', views.overlord, name = 'overlord'),
     path('player/', views.player, name = 'player'),
     path('gameboard/', views.board, name = 'board'),
-
+    path('create/', views.create, name = 'create'),
     ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

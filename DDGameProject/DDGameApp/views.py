@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .forms import UserForm
+from .forms import UserForm, GameForm
 # from .models import
 
 
 # Create your views here.
 def index(request):
-#     oldwiki = WikiModel.objects.all()
     users = request.user
     return render(request, 'DDGameApp/index.html', {'user': users })
 
@@ -37,17 +36,21 @@ def newplayer(request):
         if new.is_valid:
             for x in useray:
                 if x == request.POST['username']:
-                    return render(request, 'DDGameApp/newuser.html', {'form': UserForm(), 'hi': 'That username is taken. Please use another one.'})
+                    return render(request, 'DDGameApp/newuser.html', {'form': UserForm()})
             form = User.objects.create_user(username=request.POST['username'], email='', password=request.POST['password'])
             form.save()
             login(request, form)
             return redirect('index')
-    return render(request, 'DDGameApp/newuser.html', {'form': UserForm(), 'hi': 'Please enter a username and password.'})
+    return render(request, 'DDGameApp/newuser.html', {'form': UserForm()})
 
 def overlord(request):
     return render(request, 'DDGameApp/overlord.html')
+
 def player(request):
     return render(request, 'DDGameApp/player.html')
 
 def board(request):
     return render(request, 'DDGameApp/board.html')
+
+def create(request):
+    return render(request, 'DDGameApp/create.html')

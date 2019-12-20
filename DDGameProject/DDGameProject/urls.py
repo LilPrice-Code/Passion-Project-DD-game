@@ -18,6 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include("DDGameApp.urls")),
+    path('backend/', include("DDGameAPI.urls")),
     path('admin/', admin.site.urls)
 
 ]

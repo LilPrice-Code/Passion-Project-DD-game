@@ -1,14 +1,52 @@
 {% extends 'DDGameApp/overlord.html' %} {% block over %}   {% load static %}
 <div>
-    <canvas id="mycanvas" width="1000" height="500" style="border:3px solid #000000; "  onclick="drawboard()"></canvas>
+    <h2>Overlord: Overlord Username</h2>
+    <canvas id="mycanvas" width="1000" height="500" style="border:3px solid #000000; "></canvas>
+<!--        <p><button onclick="drawboard()">Toggle Grid</button></p>-->
+    <p>
+        <button class="butt" onclick="moving('up')">UP</button>
+        <button class="butt" onclick="moving('left')">LEFT</button>
+        <button class="butt" onclick="moving('down')">DOWN</button>
+        <button class="butt" onclick="moving('right')">RIGHT</button>
+    </p>
+    <div id="container">
+        <div>
+            <h2>Player 1 (Username)</h2>
+            <p>Health:100/100 || Mana:100/100</p>
+            <p>Attack:100 || Defense:125</p>
+            <p>Dexterity:10 || Evasiveness:15</p>
+            <p>Accuracy:25 || Power:10</p>
+        </div>
+        <div>
+            <h2>Player 2 (Username)</h2>
+            <p>Health:100/100 || Mana:100/100</p>
+            <p>Attack:100 || Defense:125</p>
+            <p>Dexterity:10 || Evasiveness:15</p>
+            <p>Accuracy:25 || Power:10</p>
+        </div>
+        <div>
+            <h2>Empty Slot </h2>
+            <p>Health:0/0 || Mana:0/0</p>
+            <p>Attack:0 || Defense:0</p>
+            <p>Dexterity:0 || Evasiveness:0</p>
+            <p>Accuracy:0 || Power:0</p>
+        </div>
+        <div>
+            <h2>Player 4 (Username)</h2>
+            <p>Health:100/100 || Mana:100/100</p>
+            <p>Attack:100 || Defense:125</p>
+            <p>Dexterity:10 || Evasiveness:15</p>
+            <p>Accuracy:25 || Power:10</p>
+        </div>
+        <div>
+            <h2>Player 5 (Username)</h2>
+            <p>Health:100/100 || Mana:100/100</p>
+            <p>Attack:100 || Defense:125</p>
+            <p>Dexterity:10 || Evasiveness:15</p>
+            <p>Accuracy:25 || Power:10</p>
+        </div>
+    </div>
 </div>
 
-<!--<script>-->
-<!--    var canvas = document.getElementById("mycanvas");-->
-<!--    var ctx = canvas.getContext("2d");-->
-<!--    ctx.beginPath();-->
-<!--    ctx.arc(95,50,40,0,2*Math.PI);-->
-<!--    ctx.stroke();-->
-<!--</script>-->
 <script src="{% static 'DDGameApp/js/gameboard.js'%}"></script>
 {% endblock %}

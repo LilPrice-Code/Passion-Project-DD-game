@@ -31,3 +31,7 @@ input{
 #sect{
     margin: 2% 40% 2% 40%;
 }
+#container{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
