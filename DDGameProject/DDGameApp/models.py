@@ -18,8 +18,6 @@ class Character(models.Model):
     critical = models.IntegerField(default=15)
     dodge = models.IntegerField(default=10)
     coins = models.IntegerField(default = 100)
-    def __str__(self):
-            return self.name
 
 from .models import Character
 
@@ -27,17 +25,12 @@ class GameModel(models.Model):
     worldName = models.CharField(max_length = 100)
     body = models.TextField(max_length = 10000)
     pub_date = models.DateTimeField(default = timezone.now)
-    overload = models.ForeignKey(User, on_delete= models.CASCADE)
+    foreign_user = models.ForeignKey(User, on_delete= models.CASCADE)
     active = models.CharField(max_length = 4, default = "no")
     display = models.CharField(max_length = 4, default = "no")
     picture = models.CharField(max_length = 10000)
-#     player1 = models.ForeignKey(Character, on_delete=True, related_name="player1",  default=1)
-#     player2 = models.ForeignKey(Character, on_delete=True, related_name="player2",  default=1)
-#     player3 = models.ForeignKey(Character, on_delete=True, related_name="player3",  default=1)
-#     player4 = models.ForeignKey(Character, on_delete=True, related_name="player4",  default=1)
-#     player5 = models.ForeignKey(Character, on_delete=True, related_name="player5",  default=1)
-    def __str__(self):
-        return self.worldName
+
+from .models import GameModel
 
 class Monster(models.Model):
     name = models.CharField(max_length=20)
@@ -50,7 +43,11 @@ class Monster(models.Model):
     critical = models.IntegerField(default=15)
     coins = models.IntegerField(default = 10)
     experience = models.IntegerField(default=500)
-    def __str__(self):
-        return self.name
 
+
+class City(models.Model):
+    cityName = models.CharField(max_length =2000)
+    xcord = models.IntegerField(default=10)
+    ycord = models.IntegerField(default=10)
+    foreign_Game = models.ForeignKey(GameModel, on_delete= models.CASCADE)
 

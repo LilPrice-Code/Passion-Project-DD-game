@@ -1,5 +1,12 @@
 {% extends 'DDGameApp/overlord.html' %} {% block over %}   {% load static %}
 <h2>Create Game</h2>
-
-<script src="{% static 'DDGameApp/js/create.js'%}"></script>
+<section id="sect">
+    <div>
+        <form method="post">
+            {%csrf_token%}
+            {{form.as_p}}
+            <button>Create Game</button>
+        </form>
+    </div>
+</section>
 {% endblock %}

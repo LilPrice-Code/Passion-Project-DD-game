@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import UserForm, GameForm
-# from .models import
+from .models import GameModel
 
 
 # Create your views here.
@@ -53,4 +53,10 @@ def board(request):
     return render(request, 'DDGameApp/board.html')
 
 def create(request):
-    return render(request, 'DDGameApp/create.html')
+    if request.method == 'POST':
+        new = GameForm(request.POST)
+        if new.is_valid:
+            form = GameModel.objects.create(worldName=request.POST['worldName'], body=request.POST['body'],  picture=request.POST['picture'], foreign_user = request.user)
+            form.save()
+            return redirect('overlord')
+    return render(request, 'DDGameApp/create.html', {'form': GameForm()})
