@@ -12,6 +12,10 @@ urlpatterns = [
     path('player/', views.player, name = 'player'),
     path('gameboard/', views.board, name = 'board'),
     path('create/', views.create, name = 'create'),
+    path('view/', views.viewset, name = 'view'),
+    path('mygames/', views.mygame, name = 'games'),
+    path('preview/<int:gmID>/', views.preview, name = 'preview'),
+
     ]
 
 

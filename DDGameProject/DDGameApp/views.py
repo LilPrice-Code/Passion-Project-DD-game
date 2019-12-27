@@ -58,5 +58,17 @@ def create(request):
         if new.is_valid:
             form = GameModel.objects.create(worldName=request.POST['worldName'], body=request.POST['body'],  picture=request.POST['picture'], foreign_user = request.user)
             form.save()
-            return redirect('overlord')
+            return redirect('view')
     return render(request, 'DDGameApp/create.html', {'form': GameForm()})
+
+def viewset(request):
+     return render(request, 'DDGameApp/viewsetup.html')
+
+def mygame(request):
+    long = GameModel.objects.filter(foreign_user = request.user)
+    length = len(long)
+    return render(request, 'DDGameApp/mygames.html',{'game': GameModel.objects.filter(foreign_user = request.user), 'length':length})
+
+def preview(request, gmID):
+    games = GameModel.objects.get(pk = gmID)
+    return render(request, 'DDGameApp/preview.html',{'game': games})

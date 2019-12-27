@@ -1,6 +1,6 @@
 {% extends 'DDGameApp/index.html' %} {% block context %}
 <section>
-    <div><button class="butt" onclick=window.location.href="{% url 'create'%}" >Create Game</button>|| My Games || Ongoing Games || <button class="butt" onclick=window.location.href="{% url 'board' %}" >View Game Board</button> || <button class="butt" onclick=window.location.href="{% url 'player' %}" >Switch to Player Mode</button></div>
+    <div><button class="butt" onclick=window.location.href="{% url 'create'%}" >Create Game</button>|| <button class="butt" onclick=window.location.href="{% url 'games'%}" >My Games</button> || Ongoing Games || <button class="butt" onclick=window.location.href="{% url 'board' %}" >View Game Board</button> || <button class="butt" onclick=window.location.href="{% url 'player' %}" >Switch to Player Mode</button></div>
     {%block over%}
     <h2>Welcome Overlord, {{user.username}}</h2>
     {%endblock%}
