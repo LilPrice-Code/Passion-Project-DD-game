@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import UserForm, GameForm
-from .models import GameModel
+from .models import GameModel, City
 
 
 # Create your views here.
@@ -71,4 +71,5 @@ def mygame(request):
 
 def preview(request, gmID):
     games = GameModel.objects.get(pk = gmID)
-    return render(request, 'DDGameApp/preview.html',{'game': games})
+    city = City.objects.filter(foreign_Game=games)
+    return render(request, 'DDGameApp/preview.html',{'game': games, 'city': city})
