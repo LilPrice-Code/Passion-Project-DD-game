@@ -15,6 +15,8 @@ urlpatterns = [
     path('view/', views.viewset, name = 'view'),
     path('mygames/', views.mygame, name = 'games'),
     path('preview/<int:gmID>/', views.preview, name = 'preview'),
+    path('editgame/<int:gmID>/', views.editgame, name = 'editgame'),
+    path('editcity/<int:gmID>/<int:cityID>', views.editcity, name = 'editcity'),
 
     ]
 

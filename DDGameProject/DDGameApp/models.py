@@ -32,9 +32,24 @@ class GameModel(models.Model):
 
 from .models import GameModel
 
+class City(models.Model):
+    cityName = models.CharField(max_length =2000)
+    xcord = models.IntegerField(default=25)
+    ycord = models.IntegerField(default=25)
+    foreign_Game = models.ForeignKey(GameModel, on_delete= models.CASCADE)
+
+class Points(models.Model):
+    pointName = models.CharField(max_length =2000)
+    xcord = models.IntegerField(default=25)
+    ycord = models.IntegerField(default=25)
+    foreign_Game = models.ForeignKey(GameModel, on_delete= models.CASCADE)
+
+from .models import City, Points
+
 class Monster(models.Model):
     name = models.CharField(max_length=20)
     image = models.CharField(max_length =2000, default ="https://cdn.pixabay.com/photo/2013/07/12/15/05/dragon-149393_960_720.png")
+    foreign_point = models.ForeignKey(Points, on_delete= models.CASCADE)
     health = models.IntegerField(default=10)
     baseHealth = models.IntegerField(default=10)
     defense = models.IntegerField(default=10)
@@ -45,9 +60,5 @@ class Monster(models.Model):
     experience = models.IntegerField(default=500)
 
 
-class City(models.Model):
-    cityName = models.CharField(max_length =2000)
-    xcord = models.IntegerField(default=10)
-    ycord = models.IntegerField(default=10)
-    foreign_Game = models.ForeignKey(GameModel, on_delete= models.CASCADE)
+
 

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Character, GameModel
+from .models import Character, GameModel, City, Points, Monster
 from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
@@ -16,3 +16,18 @@ class GameForm(forms.ModelForm):
     class Meta():
         model = GameModel
         fields = ['worldName','body','picture']
+
+class CityForm(forms.ModelForm):
+    class Meta():
+        model = City
+        fields = ['cityName','xcord','ycord']
+
+class PointForm(forms.ModelForm):
+    class Meta():
+        model = Points
+        fields = ['pointName','xcord','ycord']
+
+class MobForm(forms.ModelForm):
+    class Meta():
+        model = Monster
+        fields = ['name']
