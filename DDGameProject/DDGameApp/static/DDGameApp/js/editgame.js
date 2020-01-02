@@ -1,4 +1,4 @@
-console.log("preview");
+console.log("EdiT Game");
 var x2 = 0;
 var y2 = 0;
 var gap2 = 25;

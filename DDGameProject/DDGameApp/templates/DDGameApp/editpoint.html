@@ -2,24 +2,11 @@
 <section>
     <h2>{{game.worldName}}</h2>
     <h3 id="map" style= "display:none;">{{game.picture}}</h3>
-    {% for x in city%}
-    <h3 class="city" style= "display:none;">{{x.cityName}}</h3>
-    <h3 class="xcord" style= "display:none;">{{x.xcord}}</h3>
-    <h3 class="ycord" style= "display:none;">{{x.ycord}}</h3>
-    {%endfor%}
-
     {% for x in point%}
     <h3 class="city" style= "display:none;">{{x.pointName}}</h3>
     <h3 class="xcord" style= "display:none;">{{x.xcord}}</h3>
     <h3 class="ycord" style= "display:none;">{{x.ycord}}</h3>
     {%endfor%}
-    <div>
-        <form method="post">
-            {%csrf_token%}
-            {{gameform.as_p}}
-            <button>Edit Game World</button>
-        </form>
-    </div>
     <canvas id="mycanvas" width="1000" height="500" style="border:3px solid #000000;"></canvas>
     <p>
         <button class="butt" onclick="moving('up')">UP</button>
@@ -27,9 +14,19 @@
         <button class="butt" onclick="moving('down')">DOWN</button>
         <button class="butt" onclick="moving('right')">RIGHT</button>
     </p>
-
+    <div>
+    <form method="post">
+        {%csrf_token%}
+        {{pointform.as_p}}
+        <button>Edit Point</button>
+    </form>
+    </div>
+    <br>
+    <button class="butt" onclick=window.location.href="{% url 'addmob' gmID pointID %}" >Add Monster</button>
+    <button class="butt" onclick=window.location.href="{% url 'addmob' gmID pointID%}" >Add Item</button>
     <button class="butt" onclick=window.location.href="{% url 'addcity' gmID %}" >Add City</button>
     <button class="butt" onclick=window.location.href="{% url 'addpoint' gmID %}" >Add Point of Interest</button>
+    <button class="butt" onclick=window.location.href="{% url 'editgame' gmID %}" >Edit Game</button>
 
     <script src="{% static 'DDGameApp/js/editgame.js'%}"></script>
 </section>

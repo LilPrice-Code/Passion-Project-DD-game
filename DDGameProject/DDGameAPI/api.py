@@ -1,6 +1,6 @@
 from rest_framework import viewsets, permissions
-from DDGameApp.models import Character, GameModel, User, Monster, City
-from .serializers import CharacterSer, GameSer, UserSer, MobSer, CitySer
+from DDGameApp.models import Character, GameModel, User, Monster, City, Points
+from .serializers import CharacterSer, GameSer, UserSer, MobSer, CitySer, PointSer
 
 class Char(viewsets.ModelViewSet):
     queryset = Character.objects.all()
@@ -37,3 +37,10 @@ class CityMod(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = CitySer
+
+class PointMod(viewsets.ModelViewSet):
+    queryset = Points.objects.all()
+    permissions_class = [
+        permissions.AllowAny
+    ]
+    serializer_class = PointSer

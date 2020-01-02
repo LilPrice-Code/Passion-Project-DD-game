@@ -60,5 +60,27 @@ class Monster(models.Model):
     experience = models.IntegerField(default=500)
 
 
+class Item(models.Model):
+    name = models.CharField(max_length=20)
+    foreign_point = models.ForeignKey(Points, on_delete= models.CASCADE)
+    attack = models.IntegerField(default=10)
+
+
+
+class ShopItem(models.Model):
+    name = models.CharField(max_length=20)
+    foreign_point = models.ForeignKey(City, on_delete= models.CASCADE)
+    attack = models.IntegerField(default=10)
+    coins = models.IntegerField(default = 10)
+
+
+
+class Quest(models.Model):
+    name = models.CharField(max_length=20)
+    foreign_point = models.ForeignKey(City, on_delete= models.CASCADE)
+    attack = models.IntegerField(default=10)
+    coins = models.IntegerField(default = 10)
+    experience = models.IntegerField(default=500)
+
 
 

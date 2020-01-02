@@ -21,9 +21,12 @@
         <button>Edit City</button>
     </form>
     </div>
-
-<!--    <button class="butt" onclick=window.location.href="{% url 'editgame' gmID %}" >Add Monster</button>-->
-    <button class="butt" onclick=window.location.href="{% url 'editgame' gmID %}" >Back to Game World</button>
+    <br>
+    <button class="butt" onclick=window.location.href="{% url 'editgame' gmID %}" >Add Quest</button>
+    <button class="butt" onclick=window.location.href="{% url 'editgame' gmID %}" >Add Shop Item</button>
+    <button class="butt" onclick=window.location.href="{% url 'addcity' gmID %}" >Add City</button>
+    <button class="butt" onclick=window.location.href="{% url 'addpoint' gmID %}" >Add Point of Interest</button>
+    <button class="butt" onclick=window.location.href="{% url 'editgame' gmID %}" >Edit Game</button>
 
     <script src="{% static 'DDGameApp/js/editgame.js'%}"></script>
 </section>

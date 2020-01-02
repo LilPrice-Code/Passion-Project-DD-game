@@ -1,0 +1,42 @@
+{% extends 'DDGameApp/overlord.html' %} {% block over %} {%load static%}
+<section>
+    <h2>{{game.worldName}}</h2>
+    <h3 id="map" style="display:none;">{{game.picture}}</h3>
+    {% for x in city%}
+    <h3 class="city" style="display:none;">{{x.cityName}}</h3>
+    <h3 class="xcord" style="display:none;">{{x.xcord}}</h3>
+    <h3 class="ycord" style="display:none;">{{x.ycord}}</h3>
+    {%endfor%}
+
+    {% for x in point%}
+    <h3 class="city" style="display:none;">{{x.pointName}}</h3>
+    <h3 class="xcord" style="display:none;">{{x.xcord}}</h3>
+    <h3 class="ycord" style="display:none;">{{x.ycord}}</h3>
+    {%endfor%}
+    <canvas id="mycanvas" width="1000" height="500" style="border:3px solid #000000;"></canvas>
+    <p>
+        <button class="butt" onclick="moving('up')">UP</button>
+        <button class="butt" onclick="moving('left')">LEFT</button>
+        <button class="butt" onclick="moving('down')">DOWN</button>
+        <button class="butt" onclick="moving('right')">RIGHT</button>
+    </p>
+        <div>
+        <form method="post">
+            {%csrf_token%}
+            {{pointform.as_p}}
+            <button>Add City</button>
+        </form>
+        </div>
+    <hr>
+    <h3>All Points</h3>
+        {%for x in point%}
+        <h4>{{x.pointName}}</h4>
+        <button class="butt" onclick=window.location.href="{% url 'editpoint' gmID x.id %}" >Edit Point</button>
+        {%endfor%}
+    <hr>
+    <button class="butt" onclick=window.location.href="{% url 'editgame' gmID %}" >Edit Game</button>
+    <button class="butt" onclick=window.location.href="{% url 'addcity' gmID %}" >Add City</button>
+
+    <script src="{% static 'DDGameApp/js/editgame.js'%}"></script>
+</section>
+{% endblock %}

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .forms import UserForm, GameForm, CityForm, MobForm, PointForm
-from .models import GameModel, City, Monster, Points
+from .forms import UserForm, GameForm, CityForm, MobForm, PointForm, ItemForm
+from .models import GameModel, City, Monster, Points, Item
 
 
 # Create your views here.
@@ -72,7 +72,8 @@ def mygame(request):
 def preview(request, gmID):
     games = GameModel.objects.get(pk = gmID)
     city = City.objects.filter(foreign_Game=games)
-    return render(request, 'DDGameApp/preview.html',{'game': games, 'city': city})
+    point = Points.objects.filter(foreign_Game=games)
+    return render(request, 'DDGameApp/preview.html',{'game': games, 'city': city, 'point': point})
 
 def editgame(request, gmID):
     games = GameModel.objects.get(pk = gmID)
@@ -83,34 +84,94 @@ def editgame(request, gmID):
         if newgame.is_valid:
             newgame.save()
             return redirect('editgame', gmID)
-    if request.method == 'POST':
-           new = CityForm(request.POST)
-           if new.is_valid:
-               form = City.objects.create(cityName=request.POST['cityName'], xcord=request.POST['xcord'],  ycord=request.POST['ycord'], foreign_Game = games)
-               form.save()
-               return redirect('editgame', gmID)
+#     if request.method == 'POST':
+#            new = CityForm(request.POST)
+#            if new.is_valid():
+#                form = City.objects.create(cityName=request.POST['cityName'], xcord=request.POST['xcord'],  ycord=request.POST['ycord'], foreign_Game = games)
+#                form.save()
+#                return redirect('editgame', gmID)
 #     if request.method == 'POST':
 #               newpoint = PointForm(request.POST)
-#               if newpoint.is_valid:
+#               if newpoint.is_valid():
 #                   formpoint = Points.objects.create(pointName=request.POST['pointName'], xcord=request.POST['xcord'],  ycord=request.POST['ycord'], foreign_Game = games)
 #                   formpoint.save()
 #                   return redirect('editgame', gmID)
-    return render(request, 'DDGameApp/editgame.html',{'gmID': gmID, 'game': games, 'city': city , 'pointform': PointForm(), 'cityform': CityForm(), 'gameform': GameForm(instance=games)})
+    return render(request, 'DDGameApp/editgame.html',{'gmID': gmID, 'point': point, 'game': games, 'city': city , 'pointform': PointForm(), 'cityform': CityForm(), 'gameform': GameForm(instance=games)})
+
+def addcity(request, gmID):
+    games = GameModel.objects.get(pk = gmID)
+    city = City.objects.filter(foreign_Game=games)
+    point = Points.objects.filter(foreign_Game=games)
+    if request.method == 'POST':
+        new = CityForm(request.POST)
+        if new.is_valid():
+            form = City.objects.create(cityName=request.POST['cityName'], xcord=request.POST['xcord'],  ycord=request.POST['ycord'], foreign_Game = games)
+            form.save()
+            return redirect('addcity', gmID)
+    return render(request, 'DDGameApp/addcity.html',{'gmID': gmID, 'point': point, 'game': games, 'city': city , 'pointform': PointForm(), 'cityform': CityForm(), 'gameform': GameForm(instance=games)})
+
+def addpoint(request, gmID):
+    games = GameModel.objects.get(pk = gmID)
+    city = City.objects.filter(foreign_Game=games)
+    point = Points.objects.filter(foreign_Game=games)
+    if request.method == 'POST':
+        newpoint = PointForm(request.POST)
+        if newpoint.is_valid():
+            formpoint = Points.objects.create(pointName=request.POST['pointName'], xcord=request.POST['xcord'],  ycord=request.POST['ycord'], foreign_Game = games)
+            formpoint.save()
+            return redirect('addpoint', gmID)
+    return render(request, 'DDGameApp/addpoint.html',{'gmID': gmID, 'point': point, 'game': games, 'city': city , 'pointform': PointForm(), 'cityform': CityForm(), 'gameform': GameForm(instance=games)})
+
 
 def editcity(request, gmID, cityID):
     games = GameModel.objects.get(pk = gmID)
     city = City.objects.filter(foreign_Game=games)
     cit = City.objects.get(pk=cityID)
-    mobs = Mon
     if request.method == "POST":
         newcity = CityForm(request.POST or None , request.FILES, instance = cit)
         if newcity.is_valid:
             newcity.save()
             return redirect('editcity', gmID, cityID)
+#     if request.method == 'POST':
+#                new = MobForm(request.POST)
+#                if new.is_valid:
+#                    form = Monster.objects.create(name=request.POST['name'], foreign_point = games)
+#                    form.save()
+#                    return redirect('editcity', gmID, cityID)
+    return render(request, 'DDGameApp/editcity.html',{'game': games, 'gmID': gmID, 'cityID':cityID, 'city': city ,'cityform': CityForm(instance=cit)})
+
+
+def editpoint(request, gmID, pointID):
+    games = GameModel.objects.get(pk = gmID)
+    city = City.objects.filter(foreign_Game=games)
+    point = Points.objects.filter(foreign_Game=games)
+    pnt = Points.objects.get(pk=pointID)
+    mob = Monster.objects.filter(foreign_point=point)
+    if request.method == "POST":
+        newpoint = PointForm(request.POST or None , request.FILES, instance = pnt)
+        if newpoint.is_valid:
+            newpoint.save()
+            return redirect('editpoint', gmID, pointID)
+#     if request.method == 'POST':
+#                new = MobForm(request.POST)
+#                if new.is_valid:
+#                    form = Monster.objects.create(name=request.POST['name'], foreign_point = games)
+#                    form.save()
+#                    return redirect('editcity', gmID, cityID)
+    return render(request, 'DDGameApp/editpoint.html',{'game': games, 'gmID': gmID, 'pointID': pointID , 'city': city , 'point': point, 'mob': mob, 'pointform': PointForm(instance=pnt)})
+
+
+
+def addmob(request, gmID, pointID):
+    games = GameModel.objects.get(pk = gmID)
+    city = City.objects.filter(foreign_Game=games)
+    point = Points.objects.filter(foreign_Game=games)
+    pnt = Points.objects.get(pk=pointID)
+    mob = Monster.objects.filter(foreign_point=pnt)
     if request.method == 'POST':
-               new = MobForm(request.POST)
-               if new.is_valid:
-                   form = Monster.objects.create(name=request.POST['name'], foreign_point = games)
-                   form.save()
-                   return redirect('editcity', gmID, cityID)
-    return render(request, 'DDGameApp/editcity.html',{'game': games, 'gmID': gmID, 'city': city ,'cityform': CityForm(instance=cit)})
+        new = MobForm(request.POST)
+        if new.is_valid:
+            form = Monster.objects.create(name=request.POST['name'], foreign_point = point)
+            form.save()
+            return redirect('addmob', gmID, pointID)
+    return render(request, 'DDGameApp/addmonster.html',{'game': games, 'gmID': gmID, 'pointID': pointID , 'city': city , 'point': point, 'mob': mob, 'mobform': MobForm()})
