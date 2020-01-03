@@ -1,11 +1,15 @@
 {% extends 'DDGameApp/overlord.html' %} {% block over %}
 <section>
     <h2>{{user.username}}'s Game Page</h2>
+    {% if length > 0%}
     {%for x in game%}
     <h3>{{x.worldName}}</h3>
     <button class="butt" onclick=window.location.href="{% url 'editgame' x.id %}" > Edit Game World</button>
     <button class="butt" onclick=window.location.href="{% url 'preview' x.id %}" >View on Game Board </button>
     {%endfor%}
-
+    {%else%}
+    <h3>You do not any Game Worlds.</h3>
+    <h4><a href="{%url 'create'%}">Create One!!</a></h4>
+    {%endif%}
 </section>
 {% endblock %}

@@ -13,11 +13,12 @@
     <h3 class="xcord" style="display:none;">{{x.xcord}}</h3>
     <h3 class="ycord" style="display:none;">{{x.ycord}}</h3>
     {%endfor%}
+    <p><a href="">Reload Map</a></p>
     <canvas id="mycanvas" width="1000" height="500" style="border:3px solid #000000;"></canvas>
     <h2 id="location">Your Current Position: In the Wild</h2>
     <h3>
-        <p id="xcordt">Xcord: 500 </p>
-        <p id="ycordt">Ycord: 250 </p>
+        <p id="xcordt">Xcord: 500</p>
+        <p id="ycordt">Ycord: 250</p>
     </h3>
     <p>
         <button class="butt" onclick="moving('up')">UP</button>
@@ -25,6 +26,7 @@
         <button class="butt" onclick="moving('down')">DOWN</button>
         <button class="butt" onclick="moving('right')">RIGHT</button>
     </p>
+    <h2>City Info</h2>
     <div>
         <form method="post">
             {%csrf_token%}
@@ -34,15 +36,19 @@
     </div>
     <hr>
     <h2>All Cities</h2>
+    {%if citylength > 0%}
     <div id="container2">
         {%for x in city%}
-        <div class="cityblock" >
-        <h3>{{x.cityName}}</h3>
-            <h3>Xcord: {{x.xcord}}  Ycord: {{x.ycord}}</h3>
-        <button class="butt" onclick=window.location.href="{% url 'editcity' gmID x.id %}" >Edit City</button>
+        <div class="cityblock">
+            <h3>{{x.cityName}}</h3>
+            <h3>Xcord: {{x.xcord}} Ycord: {{x.ycord}}</h3>
+            <button class="butt" onclick=window.location.href="{% url 'editcity' gmID x.id %}" >Edit City</button>
         </div>
         {%endfor%}
     </div>
+    {%else%}
+    <p>There are currently 0 Cities are in this world</p>
+    {%endif%}
     <hr>
     <button class="butt" onclick=window.location.href="{% url 'editgame' gmID %}" >Edit Game</button>
     <button class="butt" onclick=window.location.href="{% url 'addpoint' gmID %}" >Add Point of Interest</button>

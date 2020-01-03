@@ -13,7 +13,7 @@ console.log("Drawing Game");
 var canvas = document.getElementById("mycanvas");
 var ctx = canvas.getContext("2d");
 ctx.drawImage(img, 0, 0, 1000, 500);
-
+ctx.fillRect(startx, starty, 25, 25);
 var getcities = document.getElementsByClassName("city");
 var getxcord = document.getElementsByClassName("xcord");
 var getycord = document.getElementsByClassName("ycord");
@@ -41,8 +41,11 @@ function myFun(eve) {
 function showcities() {
     while (numcities < fulllength) {
         ctx.font = "25px serif";
-            ctx.strokeText(getcities.item(numcities).innerHTML, getxcord.item(numcities).innerHTML - 25, getycord.item(numcities).innerHTML - 5, 75, 25);
-        ctx.fillRect(getxcord.item(numcities).innerHTML, getycord.item(numcities).innerHTML, 25, 25);
+        ctx.strokeText(getcities.item(numcities).innerHTML, getxcord.item(numcities).innerHTML - 25, getycord.item(numcities).innerHTML - 5, 75, 25);
+        // ctx.fillRect(getxcord.item(numcities).innerHTML, getycord.item(numcities).innerHTML, 25, 25);
+        var city1img = new Image();
+        city1img.src = "https://cdn.shopify.com/s/files/1/0090/5072/products/PV6866JJ.jpeg?v=1485394744";
+        ctx.drawImage(city1img,getxcord.item(numcities).innerHTML, getycord.item(numcities).innerHTML, 25, 25);
         numcities++;
     }
     console.log(cityLocts);
@@ -79,7 +82,9 @@ while (numcities < fulllength) {
     cityLocts[1].Location[1].Y.push(citynew.ypost);
     ctx.font = "25px serif";
     ctx.strokeText(getcities.item(numcities).innerHTML, getxcord.item(numcities).innerHTML - 25, getycord.item(numcities).innerHTML - 5, 75, 25);
-    ctx.fillRect(getxcord.item(numcities).innerHTML, getycord.item(numcities).innerHTML, 25, 25);
+    var city1img = new Image();
+    city1img.src = "https://cdn.shopify.com/s/files/1/0090/5072/products/PV6866JJ.jpeg?v=1485394744";
+    ctx.drawImage(city1img,getxcord.item(numcities).innerHTML, getycord.item(numcities).innerHTML, 25, 25);
 
 
     numcities++;
@@ -117,8 +122,8 @@ function moving(move) {
         startx = startx + 25;
     }
     ctx.drawImage(img, 0, 0, 1000, 500);
-    ctx.strokeRect(startx, starty, 25, 25);
-    partyloc = ctx.strokeRect(startx, starty, 25, 25);
+    ctx.fillRect(startx, starty, 25, 25);
+    partyloc = ctx.fillRect(startx, starty, 25, 25);
     // drawboard();
     showcities();
     positionupdate();

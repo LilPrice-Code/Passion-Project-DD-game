@@ -13,6 +13,7 @@
     <h3 class="xcord" style="display:none;">{{x.xcord}}</h3>
     <h3 class="ycord" style="display:none;">{{x.ycord}}</h3>
     {%endfor%}
+    <p><a href="">Reload Map</a></p>
     <canvas id="mycanvas" width="1000" height="500" style="border:3px solid #000000;"></canvas>
     <h2 id="location">Your Current Position: In the Wild</h2>
     <h3>
@@ -25,6 +26,7 @@
         <button class="butt" onclick="moving('down')">DOWN</button>
         <button class="butt" onclick="moving('right')">RIGHT</button>
     </p>
+    <h2>Point Info</h2>
     <div>
         <form method="post">
             {%csrf_token%}
@@ -34,6 +36,7 @@
     </div>
     <hr>
     <h1>All Points</h1>
+    {% if pointlength > 0%}
     <div id="container2">
         {%for x in point%}
         <div>
@@ -43,11 +46,12 @@
         </div>
         {%endfor%}
     </div>
+    {%else%}
+    <p> There are currently 0 Points in this world</p>
+    {%endif%}
     <hr>
-    <button class="butt" onclick=window.location.href="{% url
-    'editgame' gmID %}" >Edit Game</button>
-    <button class="butt" onclick=window.location.href="{% url
-    'addcity' gmID %}" >Add City</button>
+    <button class="butt" onclick=window.location.href="{% url 'editgame' gmID %}" >Edit Game</button>
+    <button class="butt" onclick=window.location.href="{% url 'addcity' gmID %}" >Add City</button>
 
     <script src="{% static 'DDGameApp/js/editgame.js'%}"></script>
 </section>

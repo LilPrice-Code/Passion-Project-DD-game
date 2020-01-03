@@ -101,6 +101,7 @@ def editgame(request, gmID):
 def addcity(request, gmID):
     games = GameModel.objects.get(pk = gmID)
     city = City.objects.filter(foreign_Game=games)
+    citylength= len(city)
     point = Points.objects.filter(foreign_Game=games)
     if request.method == 'POST':
         new = CityForm(request.POST)
@@ -108,19 +109,20 @@ def addcity(request, gmID):
             form = City.objects.create(cityName=request.POST['cityName'], xcord=request.POST['xcord'],  ycord=request.POST['ycord'], foreign_Game = games)
             form.save()
             return redirect('addcity', gmID)
-    return render(request, 'DDGameApp/addcity.html',{'gmID': gmID, 'point': point, 'game': games, 'city': city , 'pointform': PointForm(), 'cityform': CityForm(), 'gameform': GameForm(instance=games)})
+    return render(request, 'DDGameApp/addcity.html',{'gmID': gmID, 'point': point, 'game': games, 'city': city, 'citylength': citylength, 'pointform': PointForm(), 'cityform': CityForm(), 'gameform': GameForm(instance=games)})
 
 def addpoint(request, gmID):
     games = GameModel.objects.get(pk = gmID)
     city = City.objects.filter(foreign_Game=games)
     point = Points.objects.filter(foreign_Game=games)
+    pointlength= len(point)
     if request.method == 'POST':
         newpoint = PointForm(request.POST)
         if newpoint.is_valid():
             formpoint = Points.objects.create(pointName=request.POST['pointName'], xcord=request.POST['xcord'],  ycord=request.POST['ycord'], foreign_Game = games)
             formpoint.save()
             return redirect('addpoint', gmID)
-    return render(request, 'DDGameApp/addpoint.html',{'gmID': gmID, 'point': point, 'game': games, 'city': city , 'pointform': PointForm(), 'cityform': CityForm(), 'gameform': GameForm(instance=games)})
+    return render(request, 'DDGameApp/addpoint.html',{'gmID': gmID, 'point': point, 'game': games, 'city': city , 'pointlength': pointlength, 'pointform': PointForm(), 'cityform': CityForm(), 'gameform': GameForm(instance=games)})
 
 
 def editcity(request, gmID, cityID):

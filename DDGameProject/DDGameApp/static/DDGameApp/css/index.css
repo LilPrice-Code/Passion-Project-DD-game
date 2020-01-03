@@ -2,7 +2,7 @@
     background-color: black;
     text-align: center;
     border: #61dafb 5px solid;
-    padding: 1% 2% 1% 2%;
+    padding: 0% 2% 1% 2%;
     color: #61dafb;
 
 
@@ -27,9 +27,9 @@ button {
     padding: 1% 2% 1% 2%;
 }
 button:hover {
-    background-color: black;
-    color: darkgreen;
-    border-color: saddlebrown ;
+    background-color: #61dafb;
+    color: black;
+    border-color: #61dafb;
 }
 .butt{
     padding: 4px;

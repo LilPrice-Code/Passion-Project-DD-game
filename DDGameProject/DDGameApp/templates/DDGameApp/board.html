@@ -1,14 +1,24 @@
 {% extends 'DDGameApp/overlord.html' %} {% block over %}   {% load static %}
 <div>
-    <h2>Overlord: Overlord Username</h2>
+    <h2>Welcome Overlord</h2>
+    <h3>Here is a preview of the Game Board:</h3>
+    <p>No Map? Click below</p>
+    <h4><a href="">Reload Map</a></h4>
+    <hr>
+    <h2>Overlord: {{user.username}}</h2>
+    <h3>---Custom World Name---</h3>
+    <p>Note: The map uses a grid with coordinates to place locations on the map.</p>
     <canvas id="mycanvas" width="1000" height="500" style="border:3px solid #000000; "></canvas>
 <!--        <p><button onclick="drawboard()">Toggle Grid</button></p>-->
+    <p><h2 id="location">Your Current Position: In the Wild</h2> /\/\/\Displays Party location/\/\/\</p>
     <p>
         <button class="butt" onclick="moving('up')">UP</button>
         <button class="butt" onclick="moving('left')">LEFT</button>
         <button class="butt" onclick="moving('down')">DOWN</button>
         <button class="butt" onclick="moving('right')">RIGHT</button>
     </p>
+    <p>These Buttons will be tied to a vote and timer(7 seconds) only between players in the party. (You can use it to move around the map on this page.)</p>
+    <h3>---Displays all players and player stats---</h3>
     <div id="container">
         <div>
             <h2>Player 1 (Username)</h2>
@@ -46,6 +56,11 @@
             <p>Accuracy:25 || Power:10</p>
         </div>
     </div>
+    <hr>
+    <h3>That is all your going to see on the Game Board.</h3>
+    <h4>Here is a brief tutorial to build a game world.</h4>
+    <h4><a href="">Game World Tutorial</a></h4>
+
 </div>
 
 <script src="{% static 'DDGameApp/js/gameboard.js'%}"></script>

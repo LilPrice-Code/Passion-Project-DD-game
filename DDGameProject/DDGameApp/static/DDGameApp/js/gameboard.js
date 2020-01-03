@@ -134,6 +134,7 @@ function drawboard() {
     console.log("four Done");
 }
 
+
 function moving(move) {
     ctx.clearRect(startx, starty, 25, 25);
     if (move === "up") {
@@ -167,11 +168,11 @@ function moving(move) {
     // else if(startx === cityLocts[1].Location[0].X[2] && starty === cityLocts[1].Location[1].Y[2]){
     //     alert("You have arrived at " + cityLocts[0].CityName[2])
     // }
-
+    partyLocation();
     while(numcities < cityLocts[0].CityName.length){
         if (startx === cityLocts[1].Location[0].X[numcities] && starty === cityLocts[1].Location[1].Y[numcities])
         {
-            alert("You have arrived at " + cityLocts[0].CityName[numcities]);
+            console.log("You have arrived at " + cityLocts[0].CityName[numcities]);
             console.log(numcities);
             break;
 
@@ -183,8 +184,19 @@ function moving(move) {
         }
     }
     numcities = 0;
-
-
-
-
+}
+function partyLocation() {
+    var newloct = document.getElementById('location');
+    console.log("location Check");
+    while (numcities < cityLocts[0].CityName.length) {
+        if (partylocx === cityLocts[1].Location[0].X[numcities] && partylocy === cityLocts[1].Location[1].Y[numcities]) {
+            newloct.innerText = "Your Current Position: " + cityLocts[0].CityName[numcities];
+            break;
+        }
+        else{
+            newloct.innerText = "Your Current Position: In the Wild";
+        }
+        numcities = numcities + 1;
+    }
+    numcities = 0;
 }

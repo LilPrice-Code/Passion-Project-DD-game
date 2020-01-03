@@ -10,8 +10,7 @@
 <section id="body">
 {% if user.is_authenticated %}
 <header>
-    <h2>Welcome to Project DragonSlayer</h2>
-    <p><button  id="butt" class="butt" onclick=window.location.href="{% url 'logout' %}" >Logout</button></p>
+    <h2>Project DragonSlayer</h2>
 </header>
 {%else%}
 <header><h2>Project DragonSlayer</h2>
@@ -24,6 +23,7 @@
 <h1>Welcome to Project DragonSlayer, {{user.username}}</h1>
 <h2>Are a coming in as an ...</h2>
 <h2><a href="{% url 'overlord' %}" >Overlord</a> or <a href="{% url 'player' %}" >Player</a>?</h2>
+    <button  class="navbar" onclick=window.location.href="{% url 'logout' %}" >Logout</button>
 {%endblock%}
 {%else%}
 <h1>Welcome Slayer</h1>
