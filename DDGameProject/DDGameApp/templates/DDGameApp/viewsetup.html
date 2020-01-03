@@ -1,5 +1,9 @@
 {% extends 'DDGameApp/overlord.html' %} {% block over %}
 <section>
-    <h2>Your game has been Saved!</h2>
+    <h2>You just getting started!</h2>
+    <h4>Your game is saved but has a blank map.</h4>
+    <h4>This Link will send you to were your game was saved at.</h4>
+    <h4>Newest Game will always be a the bottom.</h4>
+    <button class="butt" onclick=window.location.href="{% url 'games'%}" >My Games</button>
 </section>
 {% endblock %}

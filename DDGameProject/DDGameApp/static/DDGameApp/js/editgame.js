@@ -31,6 +31,12 @@ class Citiesfind {
         this.ypost = ypost;
     }
 }
+function myFun(eve) {
+    window.addEventListener("keypress", myEventHandler, false);
+    var bar = eve.key;
+    console.log(bar);
+    document.getElementById("demo").innerHTML = "The Unicode value is: " + bar;
+}
 
 function showcities() {
     while (numcities < fulllength) {
@@ -41,6 +47,29 @@ function showcities() {
     }
     console.log(cityLocts);
 
+}
+function partyLocation() {
+    var newloct = document.getElementById('location');
+    console.log("location Check");
+    while (numcities < cityLocts[0].CityName.length) {
+        if (partylocx === parseInt(cityLocts[1].Location[0].X[numcities]) && partylocy === parseInt(cityLocts[1].Location[1].Y[numcities])) {
+            newloct.innerText = "Your Current Position: " + cityLocts[0].CityName[numcities];
+            break;
+
+
+        }
+        else{
+            newloct.innerText = "Your Current Position: In the Wild";
+        }
+        numcities = numcities + 1;
+    }
+    numcities = 0;
+}
+function positionupdate() {
+    var newxpost = document.getElementById("xcordt");
+    var newypost = document.getElementById("ycordt");
+    newxpost.innerText = "Xcord: " + startx;
+    newypost.innerText = "Ycord: " + starty;
 }
 
 while (numcities < fulllength) {
@@ -78,7 +107,6 @@ function drawboard() {
 
 
 function moving(move) {
-    ctx.fillRect(startx, starty, 25, 25);
     if (move === "up") {
         starty = starty - 25;
     } else if (move === "down") {
@@ -93,18 +121,19 @@ function moving(move) {
     partyloc = ctx.strokeRect(startx, starty, 25, 25);
     // drawboard();
     showcities();
+    positionupdate();
     partylocx = startx;
     partylocy =starty;
     console.log(partylocx, partylocy);
 
     numcities = 0;
+    partyLocation();
 
     while (numcities < cityLocts[0].CityName.length) {
         // console.log(numcities);
         // console.log(cityLocts[1].Location[0].X[numcities]);
         // console.log(getycord.item(numcities).innerHTML);
         if (partylocx === parseInt(cityLocts[1].Location[0].X[numcities]) && partylocy === parseInt(cityLocts[1].Location[1].Y[numcities])) {
-            alert("You have arrived at " + cityLocts[0].CityName[numcities]);
             console.log("You have arrived at " + cityLocts[0].CityName[numcities]);
             break;
 

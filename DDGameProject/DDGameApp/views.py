@@ -167,11 +167,11 @@ def addmob(request, gmID, pointID):
     city = City.objects.filter(foreign_Game=games)
     point = Points.objects.filter(foreign_Game=games)
     pnt = Points.objects.get(pk=pointID)
-    mob = Monster.objects.filter(foreign_point=pnt)
-    if request.method == 'POST':
-        new = MobForm(request.POST)
-        if new.is_valid:
-            form = Monster.objects.create(name=request.POST['name'], foreign_point = point)
-            form.save()
-            return redirect('addmob', gmID, pointID)
-    return render(request, 'DDGameApp/addmonster.html',{'game': games, 'gmID': gmID, 'pointID': pointID , 'city': city , 'point': point, 'mob': mob, 'mobform': MobForm()})
+#     mob = Monster.objects.filter(foreign_point=pnt)
+#     if request.method == 'POST':
+#         new = MobForm(request.POST)
+#         if new.is_valid:
+#             form = Monster.objects.create(name=request.POST['name'], foreign_point = pnt)
+#             form.save()
+#             return redirect('addmob', gmID, pointID)
+    return render(request, 'DDGameApp/addmonster.html',{'game': games, 'gmID': gmID, 'pointID': pointID , 'city': city , 'point': point, 'mobform': MobForm()})

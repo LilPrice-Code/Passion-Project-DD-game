@@ -1,16 +1,35 @@
-body{
-    background-color: cadetblue;
+#body{
+    background-color: black;
     text-align: center;
+    border: #61dafb 5px solid;
+    padding: 1% 2% 1% 2%;
+    color: #61dafb;
+
+
+}
+h1{color: #61dafb}
+h2{color: #61dafb}
+h3{color: #61dafb}
+h4{color: #61dafb}
+h5{color: #61dafb}
+h6{color: #61dafb}
+a{color: #61dafb}
+p{color: #61dafb}
+body{
+    background-image: url("https://i.pinimg.com/originals/06/f2/bb/06f2bb9e434d28c6693493efe7e7eafe.jpg");
+    background-color: black;
+    padding: 1% 7% 1% 7%;
+
 }
 button {
     /*background-color: cadetblue;*/
-    border: black 2px solid;
+    border: cadetblue 2px solid;
     padding: 1% 2% 1% 2%;
 }
 button:hover {
     background-color: black;
-    border: greenyellow 2px solid;
-    color: white;
+    color: darkgreen;
+    border-color: saddlebrown ;
 }
 .butt{
     padding: 4px;
@@ -31,4 +50,20 @@ hr{
 #container{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+}
+
+#container2{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.navbar{
+    background-color: black;
+    border: black 2px solid;
+    padding: 1% 2% 1% 2%;
+    color: #61dafb;
+}
+.navbar:hover {
+    background-color: #61dafb;
+    color: black;
+    border-color: #61dafb;
 }

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{% static 'DDGameApp/css/index.css'%}" type="text/css">
 </head>
 <body>
+<section id="body">
 {% if user.is_authenticated %}
 <header>
     <h2>Welcome to Project DragonSlayer</h2>
@@ -30,5 +31,6 @@
 <h2>New Slayer? <a href="{%url 'newuser'%}">Join us!</a></h2>
 {%endif%}
 {%endblock%}
+</section>
 </body>
 </html>
