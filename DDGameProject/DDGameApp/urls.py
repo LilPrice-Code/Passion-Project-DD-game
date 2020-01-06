@@ -16,11 +16,14 @@ urlpatterns = [
     path('mygames/', views.mygame, name = 'games'),
     path('preview/<int:gmID>/', views.preview, name = 'preview'),
     path('editgame/<int:gmID>/', views.editgame, name = 'editgame'),
+    path('delgame/<int:gmID>/', views.delgame, name = 'delgame'),
     path('addcity/<int:gmID>/', views.addcity, name = 'addcity'),
     path('addpoint/<int:gmID>/', views.addpoint, name = 'addpoint'),
     path('editcity/<int:gmID>/<int:cityID>', views.editcity, name = 'editcity'),
+    path('delcity/<int:gmID>/<int:cityID>', views.delcity, name = 'delcity'),
     path('editpoint/<int:gmID>/<int:pointID>', views.editpoint, name = 'editpoint'),
-    path('addmonster/<int:gmID>/<int:pointID>', views.addmob, name = 'addmob'),
+    path('delpoint/<int:gmID>/<int:pointID>', views.delpoint, name = 'delpoint'),
+#     path('addmonster/<int:gmID>/<int:pointID>', views.addmob, name = 'addmob'),
 
     ]
 

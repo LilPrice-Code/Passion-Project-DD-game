@@ -46,18 +46,18 @@ class Points(models.Model):
 
 from .models import City, Points
 
-class Monster(models.Model):
-    name = models.CharField(max_length=20)
-    image = models.CharField(max_length =2000, default ="https://cdn.pixabay.com/photo/2013/07/12/15/05/dragon-149393_960_720.png")
-    foreign_point = models.ForeignKey(Points, on_delete= models.CASCADE)
-    health = models.IntegerField(default=10)
-    baseHealth = models.IntegerField(default=10)
-    defense = models.IntegerField(default=10)
-    attack = models.IntegerField(default=10)
-    dodge = models.IntegerField(default=100)
-    critical = models.IntegerField(default=15)
-    coins = models.IntegerField(default = 10)
-    experience = models.IntegerField(default=500)
+# class Monster(models.Model):
+#     name = models.CharField(max_length=20)
+#     image = models.CharField(max_length =2000, default ="https://cdn.pixabay.com/photo/2013/07/12/15/05/dragon-149393_960_720.png")
+#     foreign_point = models.ForeignKey(Points, on_delete= models.CASCADE)
+#     health = models.IntegerField(default=10)
+#     baseHealth = models.IntegerField(default=10)
+#     defense = models.IntegerField(default=10)
+#     attack = models.IntegerField(default=10)
+#     dodge = models.IntegerField(default=100)
+#     critical = models.IntegerField(default=15)
+#     coins = models.IntegerField(default = 10)
+#     experience = models.IntegerField(default=500)
 
 
 class Item(models.Model):

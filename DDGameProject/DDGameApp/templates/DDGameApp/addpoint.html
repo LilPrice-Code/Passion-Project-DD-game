@@ -43,6 +43,7 @@
             <h2>{{x.pointName}}</h2>
             <h3>Xcord: {{x.xcord}}  Ycord: {{x.ycord}}</h3>
             <button class="butt" onclick=window.location.href="{% url 'editpoint' gmID x.id %}" >Edit Point</button>
+            <button class="butt" onclick=window.location.href="{% url 'delpoint' gmID x.id %}" >Delete Point</button>
         </div>
         {%endfor%}
     </div>

@@ -43,6 +43,7 @@
             <h3>{{x.cityName}}</h3>
             <h3>Xcord: {{x.xcord}} Ycord: {{x.ycord}}</h3>
             <button class="butt" onclick=window.location.href="{% url 'editcity' gmID x.id %}" >Edit City</button>
+            <button class="butt" onclick=window.location.href="{% url 'delcity' gmID x.id %}" >Delete City</button>
         </div>
         {%endfor%}
     </div>

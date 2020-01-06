@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from DDGameApp.models import Character, GameModel, User, Monster, City, Points
+from DDGameApp.models import Character, GameModel, User, City, Points
 
 class CharacterSer(serializers.ModelSerializer):
     class Meta():
@@ -19,10 +19,10 @@ class UserSer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class MobSer(serializers.ModelSerializer):
-    class Meta():
-        model = Monster
-        fields = "__all__"
+# class MobSer(serializers.ModelSerializer):
+#     class Meta():
+#         model = Monster
+#         fields = "__all__"
 
 class CitySer(serializers.ModelSerializer):
     class Meta():

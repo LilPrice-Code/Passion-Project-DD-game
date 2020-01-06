@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .forms import UserForm, GameForm, CityForm, MobForm, PointForm, ItemForm
-from .models import GameModel, City, Monster, Points, Item
+from .forms import UserForm, GameForm, CityForm, PointForm, ItemForm
+from .models import GameModel, City, Points, Item
 
 
 # Create your views here.
@@ -68,6 +68,11 @@ def mygame(request):
     long = GameModel.objects.filter(foreign_user = request.user)
     length = len(long)
     return render(request, 'DDGameApp/mygames.html',{'game': GameModel.objects.filter(foreign_user = request.user), 'length':length})
+
+def delgame(request, gmID):
+    games = GameModel.objects.get(pk = gmID)
+    games.delete()
+    return redirect('games')
 
 def preview(request, gmID):
     games = GameModel.objects.get(pk = gmID)
@@ -162,13 +167,21 @@ def editpoint(request, gmID, pointID):
 #                    return redirect('editcity', gmID, cityID)
     return render(request, 'DDGameApp/editpoint.html',{'game': games, 'gmID': gmID, 'pointID': pointID , 'city': city , 'point': point, 'mob': mob, 'pointform': PointForm(instance=pnt)})
 
+def delcity(request, gmID, cityID):
+    city = City.objects.get(pk = cityID)
+    city.delete()
+    return redirect('addcity', gmID)
 
+def delpoint(request, gmID, pointID):
+    point = Points.objects.get(pk = pointID)
+    point.delete()
+    return redirect('addpoint', gmID)
 
-def addmob(request, gmID, pointID):
-    games = GameModel.objects.get(pk = gmID)
-    city = City.objects.filter(foreign_Game=games)
-    point = Points.objects.filter(foreign_Game=games)
-    pnt = Points.objects.get(pk=pointID)
+# def addmob(request, gmID, pointID):
+#     games = GameModel.objects.get(pk = gmID)
+#     city = City.objects.filter(foreign_Game=games)
+#     point = Points.objects.filter(foreign_Game=games)
+#     pnt = Points.objects.get(pk=pointID)
 #     mob = Monster.objects.filter(foreign_point=pnt)
 #     if request.method == 'POST':
 #         new = MobForm(request.POST)
@@ -176,4 +189,4 @@ def addmob(request, gmID, pointID):
 #             form = Monster.objects.create(name=request.POST['name'], foreign_point = pnt)
 #             form.save()
 #             return redirect('addmob', gmID, pointID)
-    return render(request, 'DDGameApp/addmonster.html',{'game': games, 'gmID': gmID, 'pointID': pointID , 'city': city , 'point': point, 'mobform': MobForm()})
+#     return render(request, 'DDGameApp/addmonster.html',{'game': games, 'gmID': gmID, 'pointID': pointID , 'city': city , 'point': point, 'mobform': MobForm()})

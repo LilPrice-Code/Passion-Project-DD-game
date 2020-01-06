@@ -1,6 +1,6 @@
 {% extends 'DDGameApp/index.html' %} {% block context %}
 <section>
-    <div><button class="navbar" onclick=window.location.href="{% url 'create'%}" >Create Game</button> <button class="navbar" onclick=window.location.href="{% url 'games'%}" >My Games</button> || Ongoing Games || <button class="navbar" onclick=window.location.href="{% url 'board' %}" >Info Page</button> <button class="navbar" onclick=window.location.href="{% url 'overlord'%}" >Game Creation Tutorial</button> <button class="navbar" onclick=window.location.href="{% url 'player' %}" >Switch to Player Mode</button> <button class="navbar" onclick=window.location.href="{% url 'logout' %}" >Logout</button></div>
+    <div><button class="navbar" onclick=window.location.href="{% url 'create'%}" >Create Game</button> <button class="navbar" onclick=window.location.href="{% url 'games'%}" >My Games</button> <button class="navbar" onclick=window.location.href="{% url 'board' %}" >Info Page</button> <button class="navbar" onclick=window.location.href="{% url 'player' %}" >Switch to Player Mode</button> <button class="navbar" onclick=window.location.href="{% url 'logout' %}" >Logout</button></div>
     {%block over%}
     <h2>Welcome Overlord, {{user.username}}</h2>
     <h3>You are an Overlord. You can create game world and watch as players try to take on the challanges you set, but you have to be there in order to
@@ -10,4 +10,5 @@
     <p>Lost? Head to the 'Info Page' to get started or click <a href="{% url 'board'%}">here.</a></p>
     {%endblock%}
 </section>
+<!--<button class="navbar" onclick=window.location.href="{% url 'overlord'%}" >Game Creation Tutorial</button>-->
 {% endblock %}
