@@ -43,6 +43,25 @@ function showcities() {
 
 }
 
+function partyLocation() {
+    var newloct = document.getElementById('location');
+    console.log("location Check");
+    while (numcities < cityLocts[0].CityName.length) {
+        if (partylocx === parseInt(cityLocts[1].Location[0].X[numcities]) && partylocy === parseInt(cityLocts[1].Location[1].Y[numcities])) {
+            newloct.innerText = "Your Current Position: " + cityLocts[0].CityName[numcities];
+            break;
+
+
+        }
+        else{
+            newloct.innerText = "Your Current Position: In the Wild";
+        }
+        numcities = numcities + 1;
+    }
+    numcities = 0;
+}
+
+
 while (numcities < fulllength) {
     var citynew = new Citiesfind(getcities.item(numcities).innerHTML, getxcord.item(numcities).innerHTML, getycord.item(numcities).innerHTML);
     cityLocts[0].CityName.push(citynew.name);
@@ -98,19 +117,5 @@ function moving(move) {
     console.log(partylocx, partylocy);
 
     numcities = 0;
-
-    while (numcities < cityLocts[0].CityName.length) {
-        // console.log(numcities);
-        // console.log(cityLocts[1].Location[0].X[numcities]);
-        // console.log(getycord.item(numcities).innerHTML);
-        if (partylocx === parseInt(cityLocts[1].Location[0].X[numcities]) && partylocy === parseInt(cityLocts[1].Location[1].Y[numcities])) {
-            alert("You have arrived at " + cityLocts[0].CityName[numcities]);
-            console.log("You have arrived at " + cityLocts[0].CityName[numcities]);
-            break;
-
-
-        }
-        numcities = numcities + 1;
-    }
-    numcities = 0;
+    partyLocation();
 }
