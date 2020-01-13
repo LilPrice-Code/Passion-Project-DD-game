@@ -3,32 +3,33 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <title>Project DragonSlayer</title>
+    <title>Lords & Warriors</title>
     <link rel="stylesheet" href="{% static 'DDGameApp/css/index.css'%}" type="text/css">
 </head>
 <body>
 <section id="body">
 {% if user.is_authenticated %}
 <header>
-    <h2>Project DragonSlayer</h2>
+    <h2>Lords & Warriors</h2>
 </header>
 {%else%}
-<header><h2>Project DragonSlayer</h2>
+<header><h2>Lords & Warriors</h2>
 </header>
 {%endif%}
 <hr>
 {% block content%}
 {% if user.is_authenticated %}
 {%block context%}
-<h1>Welcome to Project DragonSlayer, {{user.username}}</h1>
-<h2>Are a coming in as an ...</h2>
-<h2><a href="{% url 'overlord' %}" >Overlord</a> or <a href="{% url 'player' %}" >Player</a>?</h2>
+<h1>Welcome to Lords & Warriors <br>{{user.username}}</h1>
+    <hr>
+<h2>Are a coming in as a ...</h2>
+<h2><a href="{% url 'overlord' %}" >Lord</a> or <a href="{% url 'player' %}" >Warrior</a>?</h2>
     <button  class="navbar" onclick=window.location.href="{% url 'logout' %}" >Logout</button>
 {%endblock%}
 {%else%}
-<h1>Welcome Slayer</h1>
+<h1>Welcome New Player</h1>
 <h2>Please <a href="{% url 'login'%}">login</a> to continue.</h2>
-<h2>New Slayer? <a href="{%url 'newuser'%}">Join us!</a></h2>
+<h2>New Player? <a href="{%url 'newuser'%}">Join us!</a></h2>
 {%endif%}
 {%endblock%}
 </section>

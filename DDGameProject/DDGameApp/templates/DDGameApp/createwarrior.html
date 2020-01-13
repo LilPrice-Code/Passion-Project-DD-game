@@ -1,11 +1,11 @@
-{% extends 'DDGameApp/overlord.html' %} {% block over %}   {% load static %}
-<h2>Create a World</h2>
+{% extends 'DDGameApp/player.html' %} {% block play %}   {% load static %}
+<h2>Create a Warrior</h2>
 <section id="sect">
     <div>
         <form method="post">
             {%csrf_token%}
             {{form.as_p}}
-            <button>Create World</button>
+            <button>Create Warrior</button>
         </form>
     </div>
 </section>

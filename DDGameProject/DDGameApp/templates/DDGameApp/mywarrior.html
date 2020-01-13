@@ -1,0 +1,15 @@
+{% extends 'DDGameApp/player.html' %} {% block play %}   {% load static %}
+<section>
+    <h2>{{user.username}}'s Warrior</h2>
+    {% if length > 0%}
+    {%for x in war%}
+    <h3>{{x.name}}</h3>
+    <button class="butt" onclick=window.location.href="{% url 'editwar' x.id %}" > Edit Warrior</button>
+    <button class="butt" onclick=window.location.href="{% url 'delwar' x.id %}" >Delete Warrior</button>
+    {%endfor%}
+    {%else%}
+    <h3>You do not any Game Worlds.</h3>
+    <h4><a href="{%url 'newwar'%}">Create One!!</a></h4>
+    {%endif%}
+</section>
+{% endblock %}

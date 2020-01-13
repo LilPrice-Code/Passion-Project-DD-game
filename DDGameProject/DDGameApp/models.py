@@ -8,7 +8,7 @@ class Character(models.Model):
     name = models.CharField(max_length = 25)
     pictureURL = models.CharField(max_length = 200, default = "https://cdn.pixabay.com/photo/2014/04/03/00/38/shield-308943_960_720.png")
     player = models.ForeignKey(User, on_delete= models.CASCADE)
-    classname = models.CharField(max_length = 25, default="none")
+    active = models.CharField(max_length = 25, default="no")
     level = models.IntegerField(default=1)
     experience = models.IntegerField(default=0)
     health = models.IntegerField(default=100)

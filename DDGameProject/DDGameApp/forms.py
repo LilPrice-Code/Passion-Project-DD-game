@@ -10,7 +10,7 @@ class UserForm(forms.ModelForm):
 class CharacterForm(forms.ModelForm):
     class Meta():
         model = Character
-        fields = ['name']
+        fields = ['name', "pictureURL"]
 
 class GameForm(forms.ModelForm):
     class Meta():

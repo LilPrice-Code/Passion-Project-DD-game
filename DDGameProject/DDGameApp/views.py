@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .forms import UserForm, GameForm, CityForm, PointForm, ItemForm
-from .models import GameModel, City, Points, Item
+from .forms import UserForm, GameForm, CityForm, PointForm, ItemForm, CharacterForm
+from .models import GameModel, City, Points, Item, Character
 
 
 # Create your views here.
@@ -58,8 +58,17 @@ def create(request):
         if new.is_valid:
             form = GameModel.objects.create(worldName=request.POST['worldName'], body=request.POST['body'],  picture=request.POST['picture'], foreign_user = request.user)
             form.save()
-            return redirect('view')
+            return redirect('games')
     return render(request, 'DDGameApp/create.html', {'form': GameForm()})
+
+def newwar(request):
+    if request.method == 'POST':
+        new = CharacterForm(request.POST)
+        if new.is_valid:
+            form =  Character.objects.create(name=request.POST['name'],  pictureURL=request.POST['pictureURL'], player = request.user)
+            form.save()
+            return redirect('mywar')
+    return render(request, 'DDGameApp/createwarrior.html', {'form': CharacterForm()})
 
 def viewset(request):
      return render(request, 'DDGameApp/viewsetup.html')
@@ -69,10 +78,20 @@ def mygame(request):
     length = len(long)
     return render(request, 'DDGameApp/mygames.html',{'game': GameModel.objects.filter(foreign_user = request.user), 'length':length})
 
+def mywar(request):
+    long = Character.objects.filter(player = request.user)
+    length = len(long)
+    return render(request, 'DDGameApp/mywarrior.html',{'war': Character.objects.filter(player = request.user), 'length':length})
+
 def delgame(request, gmID):
     games = GameModel.objects.get(pk = gmID)
     games.delete()
     return redirect('games')
+
+def delwar(request, gmID):
+    games = Character.objects.get(pk = gmID)
+    games.delete()
+    return redirect('mywar')
 
 def preview(request, gmID):
     games = GameModel.objects.get(pk = gmID)
@@ -102,6 +121,15 @@ def editgame(request, gmID):
 #                   formpoint.save()
 #                   return redirect('editgame', gmID)
     return render(request, 'DDGameApp/editgame.html',{'gmID': gmID, 'point': point, 'game': games, 'city': city , 'pointform': PointForm(), 'cityform': CityForm(), 'gameform': GameForm(instance=games)})
+
+def editwar(request, gmID):
+    war = Character.objects.get(pk=gmID)
+    if request.method == "POST":
+        newwar = CharacterForm(request.POST or None , request.FILES, instance = war)
+        if newwar.is_valid:
+            newwar.save()
+            return redirect('editwar', gmID)
+    return render(request, 'DDGameApp/editwarrior.html',{'gmID': gmID, 'war':war ,'warform': CharacterForm(instance=war)})
 
 def addcity(request, gmID):
     games = GameModel.objects.get(pk = gmID)

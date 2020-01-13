@@ -1,8 +1,12 @@
 {% extends 'DDGameApp/index.html' %} {% block context %}
 <section>
-    <div><button class="navbar" onclick=window.location.href="{% url 'overlord' %}" >Switch to Overlord Mode</button> <button class="navbar" onclick=window.location.href="{% url 'logout' %}" >Logout</button></div>
-    <h2>Sorry, the Player Mode is not available!</h2>
-    <h2>This Feature will be updated on a later date!!!</h2>
-
+    <div><button class="navbar" onclick=window.location.href="{% url 'newwar' %}" >Create a Warrior</button> <button class="navbar" onclick=window.location.href="{% url 'mywar' %}" >My Warriors</button> <button class="navbar" onclick=window.location.href="{% url 'overlord' %}" >Switch to Lord Mode</button> <button class="navbar" onclick=window.location.href="{% url 'logout' %}" >Logout</button></div>
+    {%block play%}
+    <h2>Welcome Warrior, {{user.username}}</h2>
+    <h3>You are Warrior</h3>
+    <h3>Party up with fellow warriors, jump in to a Lord's world, and go test your luck fighting monsters around the world.</h3>
+    <h3>Good Luck out there Warrior!</h3>
+    <p>Use the menu above to navigate.</p>
+    {%endblock%}
 </section>
 {% endblock %}
