@@ -131,6 +131,11 @@ def editwar(request, gmID):
             return redirect('editwar', gmID)
     return render(request, 'DDGameApp/editwarrior.html',{'gmID': gmID, 'war':war ,'warform': CharacterForm(instance=war)})
 
+def viewwar(request, gmID):
+    war = Character.objects.get(pk=gmID)
+    return render(request, 'DDGameApp/viewwarrior.html',{'war':war})
+
+
 def addcity(request, gmID):
     games = GameModel.objects.get(pk = gmID)
     city = City.objects.filter(foreign_Game=games)
@@ -181,7 +186,7 @@ def editpoint(request, gmID, pointID):
     city = City.objects.filter(foreign_Game=games)
     point = Points.objects.filter(foreign_Game=games)
     pnt = Points.objects.get(pk=pointID)
-    mob = Monster.objects.filter(foreign_point=point)
+#     mob = Monster.objects.filter(foreign_point=point)
     if request.method == "POST":
         newpoint = PointForm(request.POST or None , request.FILES, instance = pnt)
         if newpoint.is_valid:
@@ -193,7 +198,7 @@ def editpoint(request, gmID, pointID):
 #                    form = Monster.objects.create(name=request.POST['name'], foreign_point = games)
 #                    form.save()
 #                    return redirect('editcity', gmID, cityID)
-    return render(request, 'DDGameApp/editpoint.html',{'game': games, 'gmID': gmID, 'pointID': pointID , 'city': city , 'point': point, 'mob': mob, 'pointform': PointForm(instance=pnt)})
+    return render(request, 'DDGameApp/editpoint.html',{'game': games, 'gmID': gmID, 'pointID': pointID , 'city': city , 'point': point, 'pointform': PointForm(instance=pnt)})
 
 def delcity(request, gmID, cityID):
     city = City.objects.get(pk = cityID)

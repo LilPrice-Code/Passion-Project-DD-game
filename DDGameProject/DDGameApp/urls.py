@@ -20,6 +20,7 @@ urlpatterns = [
     path('editgame/<int:gmID>/', views.editgame, name = 'editgame'),
     path('delgame/<int:gmID>/', views.delgame, name = 'delgame'),
     path('editwarrior/<int:gmID>/', views.editwar, name = 'editwar'),
+    path('viewwarrior/<int:gmID>/', views.viewwar, name = 'viewwar'),
     path('delwar/<int:gmID>/', views.delwar, name = 'delwar'),
     path('addcity/<int:gmID>/', views.addcity, name = 'addcity'),
     path('addpoint/<int:gmID>/', views.addpoint, name = 'addpoint'),

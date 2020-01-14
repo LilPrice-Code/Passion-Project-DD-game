@@ -5,6 +5,7 @@
     {%for x in war%}
     <h3>{{x.name}}</h3>
     <button class="butt" onclick=window.location.href="{% url 'editwar' x.id %}" > Edit Warrior</button>
+    <button class="butt" onclick=window.location.href="{% url 'viewwar' x.id %}" > View Warrior</button>
     <button class="butt" onclick=window.location.href="{% url 'delwar' x.id %}" >Delete Warrior</button>
     {%endfor%}
     {%else%}
