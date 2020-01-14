@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Character(models.Model):
     name = models.CharField(max_length = 25)
-    pictureURL = models.CharField(max_length = 200, default = "https://cdn.pixabay.com/photo/2014/04/03/00/38/shield-308943_960_720.png")
+    pictureURL = models.CharField(max_length = 200, default = "https://cdn.pixabay.com/photo/2012/04/14/13/35/shield-33957_960_720.png")
     player = models.ForeignKey(User, on_delete= models.CASCADE)
     active = models.CharField(max_length = 25, default="no")
     level = models.IntegerField(default=1)

@@ -19,7 +19,9 @@ var getxcord = document.getElementsByClassName("xcord");
 var getycord = document.getElementsByClassName("ycord");
 var fulllength = getcities.length;
 console.log(fulllength);
-drawboard();
+// drawboard();
+ctx.fillStyle = 'blue';
+ctx.strokeStyle = 'red';
 
 var cityLocts = [{CityName: []}, {Location: [{X: []}, {Y: []}]}];
 var numcities = 0;
