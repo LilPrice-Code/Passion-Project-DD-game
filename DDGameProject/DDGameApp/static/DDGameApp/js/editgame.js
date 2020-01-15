@@ -14,6 +14,7 @@ var canvas = document.getElementById("mycanvas");
 var ctx = canvas.getContext("2d");
 ctx.drawImage(img, 0, 0, 1000, 500);
 ctx.fillRect(startx, starty, 25, 25);
+ctx.strokeRect(startx, starty, 25, 25);
 var getcities = document.getElementsByClassName("city");
 var getxcord = document.getElementsByClassName("xcord");
 var getycord = document.getElementsByClassName("ycord");
@@ -125,6 +126,7 @@ function moving(move) {
     }
     ctx.drawImage(img, 0, 0, 1000, 500);
     ctx.fillRect(startx, starty, 25, 25);
+    ctx.strokeRect(startx, starty, 25, 25);
     partyloc = ctx.fillRect(startx, starty, 25, 25);
     // drawboard();
     showcities();
