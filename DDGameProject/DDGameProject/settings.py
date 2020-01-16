@@ -25,7 +25,7 @@ SECRET_KEY = '#-wv+zv@7z(j*g2wd89(984d%bti12(29x6&*v4$8-%1h489y='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',’app3.shoshardprice.com’,'165.227.61.139']
+ALLOWED_HOSTS = ['127.0.0.1','app3.shoshardprice.com','165.227.61.139']
 
 
 # Application definition
